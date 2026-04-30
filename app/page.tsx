@@ -1,65 +1,101 @@
+'use client'
+import Navbar from "./components/Navbar";
+import CitiesSection from "./features/cities/sections/CitiesSection";
+import OfficesSection from "./features/offices/sections/OfficesSection";
+import BenefitsSection from "./components/BenefitsSection";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
+import { Autoplay, FreeMode } from "swiper/modules";
 
 export default function Home() {
+    const clientLogos = [
+        "/assets/images/logos/TESLA.svg",
+        "/assets/images/logos/Libra 2.svg",
+        "/assets/images/logos/Binance logo.svg",
+        "/assets/images/logos/Facebook 7.svg",
+        "/assets/images/logos/Microsoft 6.svg",
+    ];
+
+    const loopingLogos = [...clientLogos, ...clientLogos];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <>
+    <Navbar />
+    <header className="flex flex-col w-full">
+        <section id="Hero-Banner" className="relative flex h-[720px] -mb-[93px]">
+            <div id="Hero-Text" className="relative flex flex-col w-full max-w-[650px] max-md:max-w-full max-lg:mx-6 h-fit rounded-[30px] border border-[#E0DEF7] p-10 max-md:p-4 max-md:mt-36 gap-[30px] bg-white mt-[70px] ml-[calc((100%-1130px)/2)] z-10">
+                <div className="flex items-center w-fit rounded-full py-2 px-4 gap-[10px] bg-[#000929] ">
+                    <img src="/assets/images/icons/crown-white.svg" className="w-5 h-5" alt="icon" />
+                    <span className="font-semibold text-white max-md:text-sm">We’ve won top productivity 500 fortunes</span>
+                </div>
+                <h1 className="font-extrabold text-[50px] leading-[60px] max-md:text-[30px] max-md:leading-[36px]">All Great Offices.<br />Grow Your Business.</h1>
+                <p className="text-lg leading-8 text-[#000929] max-md:text-sm max-md:leading-6">Kantor yang tepat dapat memberikan impact pekerjaan menjadi lebih baik dan sehat dalam tumbuhkan karir.</p>
+                <div className="flex items-center gap-5 max-md:gap-3 flex-wrap">
+                    <a href="#" className="flex items-center rounded-full p-[20px_26px] gap-3 bg-[#0D903A] max-md:px-4 max-md:py-2">
+                        <img src="/assets/images/icons/slider-horizontal-white.svg" className="w-[30px] h-[30px] max-md:w-5 max-md:h-5" alt="icon" />
+                        <span className="font-bold text-xl leading-[30px] text-[#F7F7FD] max-md:text-sm">Explore Now</span>
+                    </a>
+                    <a href="#" className="flex items-center rounded-full border border-[#000929] p-[20px_26px] gap-3 bg-white max-md:px-4 max-md:py-2">
+                        <img src="/assets/images/icons/video-octagon.svg" className="w-[30px] h-[30px] max-md:w-5 max-md:h-5" alt="icon" />
+                        <span className="font-semibold text-xl leading-[30px] max-md:text-sm">Watch Story</span>
+                    </a>
+                </div>
+            </div>
+            <div id="Hero-Image" className="absolute right-0 w-[calc(100%-((100%-1130px)/2)-305px)] h-[720px] rounded-bl-[40px] overflow-hidden">
+                <Image src="/assets/images/backgrounds/banner.webp" className="object-cover" alt="hero background" loading="eager" fill />
+            </div>
+        </section>
+        <div className="flex flex-col pt-[150px] pb-10 px-0 gap-10 bg-[#0D903A] w-full py-10 overflow-hidden">
+            <Swiper
+                modules={[Autoplay, FreeMode]}
+                spaceBetween={40}
+                grabCursor={true}
+                a11y={false}
+                freeMode={true}
+                speed={11000}
+                loop={true}
+                slidesPerView="auto"
+                autoplay={{
+                    delay: 0.5,
+                    disableOnInteraction: false,
+                }}
+                breakpoints={{
+                    0:   { spaceBetween: 30 },
+                    480: { spaceBetween: 30 },
+                    767: { spaceBetween: 40 },
+                    992: { spaceBetween: 120 },
+                }}
+                className="ease-linear logo-carousel flex items-center justify-center flex-wrap max-w-full h-[38px] mx-auto gap-[60px]"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+                {loopingLogos.map((logo, index) => (
+                    <SwiperSlide key={`${logo}-${index}`} className="w-auto content-center flex items-center justify-center">
+                        <Image src={logo} alt="clients logo" width={120} height={38} />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+            <div className="grid md:grid-cols-4 sm:grid-cols-2 justify-center gap-[50px] px-4">
+                <div className="flex flex-col gap-[2px] text-center">
+                    <p className="text-xl leading-[30px] text-[#F7F7FD]">Comfortable Space</p>
+                    <p className="font-bold text-[38px] leading-[57px] text-white">580M+</p>
+                </div>
+                <div className="flex flex-col gap-[2px] text-center">
+                    <p className="text-xl leading-[30px] text-[#F7F7FD]">Startups Succeed</p>
+                    <p className="font-bold text-[38px] leading-[57px] text-white">98%</p>
+                </div>
+                <div className="flex flex-col gap-[2px] text-center">
+                    <p className="text-xl leading-[30px] text-[#F7F7FD]">Countries</p>
+                    <p className="font-bold text-[38px] leading-[57px] text-white">90+</p>
+                </div>
+                <div className="flex flex-col gap-[2px] text-center">
+                    <p className="text-xl leading-[30px] text-[#F7F7FD]">Supportive Events</p>
+                    <p className="font-bold text-[38px] leading-[57px] text-white">139M+</p>
+                </div>
+            </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    </header>
+    <CitiesSection  />
+    <BenefitsSection />
+    <OfficesSection />
+    </>
   );
 }
