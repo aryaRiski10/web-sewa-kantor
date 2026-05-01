@@ -21,7 +21,7 @@ export default async function OfficeSinglePage( { params }: Props) {
         <OfficeHeader office={office} />
         <section
           id="Details"
-          className="relative flex max-w-[1130px] mx-auto gap-[30px] mb-20 z-10"
+          className="relative flex max-w-[1130px] max-md:flex-col mx-auto gap-[30px] mb-20 z-10"
         >
           <div className="flex flex-col w-full rounded-[20px] border border-[#E0DEF7] p-[30px] gap-[30px] bg-white">
             <p className="w-fit rounded-full p-[6px_16px] bg-[#0D903A] font-bold text-sm leading-[21px] text-[#F7F7FD]">
@@ -64,7 +64,7 @@ export default async function OfficeSinglePage( { params }: Props) {
             </p>
             <hr className="border-[#F6F5FD]" />
             <h2 className="font-bold">You Get What You Need Most</h2>
-            <div className="grid grid-cols-3 gap-x-5 gap-y-[30px]">
+            <div className="grid grid-cols-3 max-sm:grid-cols-2 gap-x-5 gap-y-[30px]">
               <OfficeFeatures features={office.features}/>
             </div>
             <hr className="border-[#F6F5FD]" />
@@ -88,7 +88,7 @@ export default async function OfficeSinglePage( { params }: Props) {
               </a>
             </div>
           </div>
-          <div className="w-[392px] flex flex-col shrink-0 gap-[30px]">
+          <div className="w-[392px] max-md:w-full flex flex-col shrink-0 gap-[30px]">
             <div className="flex flex-col rounded-[20px] border border-[#E0DEF7] p-[30px] gap-[30px] bg-white">
               {office.isBooked ? (
                 <div>

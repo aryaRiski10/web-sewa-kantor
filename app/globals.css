@@ -32,9 +32,11 @@ body {
 }
 
 .logo-carousel img {
-  width: 100px;
+  width: 120px;
 }
-
+.logo-carousel .libra {
+  width: 100px !important;
+}
 /* @media (max-width: 767px) {
   .logo-carousel img {
     width: 20px;

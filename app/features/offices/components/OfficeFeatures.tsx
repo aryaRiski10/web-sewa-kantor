@@ -44,11 +44,11 @@ export default function OfficeFeatures( {features}: {features: string[]} ) {
             <div key={feature} className="flex items-center gap-4">
               <Image width={24} height={24}
                 src={matched.icon}
-                className="w-[34px] h-[34px]"
+                className="w-[34px] h-[34px] max-md:w-[24px] max-md:h-[24px]"
                 alt="icon"
               />
               <div className="flex flex-col gap-[2px]">
-                <p className="font-bold text-lg leading-[24px]">{matched.label}</p>
+                <p className="font-bold text-lg leading-[24px] max-md:text-base">{matched.label}</p>
                 <p className="text-sm leading-[21px]">{matched.description}</p>
               </div>
             </div>

@@ -10,10 +10,10 @@ export default function OfficeCard({ office } : { office: Offices }) {
         <Link href={`/office/${office.slug}`} className="card">
             <div className="flex flex-col rounded-[20px] border border-[#E0DEF7] bg-white overflow-hidden">
                 <div className="thumbnail-container relative w-full h-[200px]">
-                    <p className="absolute top-5 left-5 w-fit rounded-full p-[6px_16px] bg-[#0D903A] font-bold text-sm leading-[21px] text-[#F7F7FD]">
+                    <p className="absolute top-5 left-5 w-fit rounded-full p-[6px_16px] bg-[#0D903A] font-bold text-sm leading-[21px] text-[#F7F7FD] z-2">
                         {office.tags[0]}
                     </p>
-                    <Image src={office.image} className="w-full h-full object-cover" alt="thumbnails" width={200} height={200}/>
+                    <Image src={office.image} className="object-cover" alt="thumbnails" loading="eager" sizes="(max-width: 768px) 100vw, 33vw" fill />
                 </div>
                 <div className="card-detail-container flex flex-col p-5 pb-[30px] gap-4">
                     <h3 className="line-clamp-2 font-bold text-[22px] leading-[36px] h-[72px]">{office.title}</h3>

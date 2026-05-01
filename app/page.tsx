@@ -9,11 +9,11 @@ import { Autoplay, FreeMode } from "swiper/modules";
 
 export default function Home() {
     const clientLogos = [
-        "/assets/images/logos/TESLA.svg",
-        "/assets/images/logos/Libra 2.svg",
-        "/assets/images/logos/Binance logo.svg",
-        "/assets/images/logos/Facebook 7.svg",
-        "/assets/images/logos/Microsoft 6.svg",
+        { name: "tesla", image: "/assets/images/logos/TESLA.svg" },
+        { name: "libra", image: "/assets/images/logos/Libra 2.svg" },
+        { name: "binance", image: "/assets/images/logos/Binance logo.svg" },
+        { name: "facebook", image: "/assets/images/logos/Facebook 7.svg" },
+        { name: "microsoft", image: "/assets/images/logos/Microsoft 6.svg" },
     ];
 
     const loopingLogos = [...clientLogos, ...clientLogos];
@@ -25,18 +25,18 @@ export default function Home() {
         <section id="Hero-Banner" className="relative flex h-[720px] -mb-[93px]">
             <div id="Hero-Text" className="relative flex flex-col w-full max-w-[650px] max-md:max-w-full max-lg:mx-6 h-fit rounded-[30px] border border-[#E0DEF7] p-10 max-md:p-4 max-md:mt-36 gap-[30px] bg-white mt-[70px] ml-[calc((100%-1130px)/2)] z-10">
                 <div className="flex items-center w-fit rounded-full py-2 px-4 gap-[10px] bg-[#000929] ">
-                    <img src="/assets/images/icons/crown-white.svg" className="w-5 h-5" alt="icon" />
+                    <Image src="/assets/images/icons/crown-white.svg" className="w-5 h-5" alt="icon" width={20} height={20} />
                     <span className="font-semibold text-white max-md:text-sm">We’ve won top productivity 500 fortunes</span>
                 </div>
                 <h1 className="font-extrabold text-[50px] leading-[60px] max-md:text-[30px] max-md:leading-[36px]">All Great Offices.<br />Grow Your Business.</h1>
                 <p className="text-lg leading-8 text-[#000929] max-md:text-sm max-md:leading-6">Kantor yang tepat dapat memberikan impact pekerjaan menjadi lebih baik dan sehat dalam tumbuhkan karir.</p>
                 <div className="flex items-center gap-5 max-md:gap-3 flex-wrap">
                     <a href="#" className="flex items-center rounded-full p-[20px_26px] gap-3 bg-[#0D903A] max-md:px-4 max-md:py-2">
-                        <img src="/assets/images/icons/slider-horizontal-white.svg" className="w-[30px] h-[30px] max-md:w-5 max-md:h-5" alt="icon" />
+                        <Image src="/assets/images/icons/slider-horizontal-white.svg" className="w-[30px] h-[30px] max-md:w-5 max-md:h-5" alt="icon" width={30} height={30} />
                         <span className="font-bold text-xl leading-[30px] text-[#F7F7FD] max-md:text-sm">Explore Now</span>
                     </a>
                     <a href="#" className="flex items-center rounded-full border border-[#000929] p-[20px_26px] gap-3 bg-white max-md:px-4 max-md:py-2">
-                        <img src="/assets/images/icons/video-octagon.svg" className="w-[30px] h-[30px] max-md:w-5 max-md:h-5" alt="icon" />
+                        <Image src="/assets/images/icons/video-octagon.svg" className="w-[30px] h-[30px] max-md:w-5 max-md:h-5" alt="icon" width={30} height={30} />
                         <span className="font-semibold text-xl leading-[30px] max-md:text-sm">Watch Story</span>
                     </a>
                 </div>
@@ -60,16 +60,16 @@ export default function Home() {
                     disableOnInteraction: false,
                 }}
                 breakpoints={{
-                    0:   { spaceBetween: 30 },
-                    480: { spaceBetween: 30 },
-                    767: { spaceBetween: 40 },
+                    0:   { spaceBetween: 40 },
+                    480: { spaceBetween: 60 },
+                    767: { spaceBetween: 80 },
                     992: { spaceBetween: 120 },
                 }}
                 className="ease-linear logo-carousel flex items-center justify-center flex-wrap max-w-full h-[38px] mx-auto gap-[60px]"
             >
                 {loopingLogos.map((logo, index) => (
-                    <SwiperSlide key={`${logo}-${index}`} className="w-auto content-center flex items-center justify-center">
-                        <Image src={logo} alt="clients logo" width={120} height={38} />
+                    <SwiperSlide key={`${logo.name}-${index}`} className="w-auto content-center flex items-center justify-center">
+                        <Image className={`${logo.name}`} src={logo.image} alt={`${logo.name} logo`} width={120} height={38} />
                     </SwiperSlide>
                 ))}
             </Swiper>
